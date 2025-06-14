@@ -6,23 +6,6 @@ from populate_database import populate_database
 import config
 import sqlite3
 
-# CHROMA_PATH = "chroma_db" # Now in config.py
-
-
-# PROMPT_TEMPLATE = """ # Now in config.py
-# You are a helpful and detailed assistant. You always answer based only on the provided context.
-
-# Context:
-# {context}
-
-# ---
-
-# Question:
-# {question}
-
-# Give a clear, complete, and helpful answer. Include examples if helpful.
-# """ # Now in config.py
-
 
 def query_rag(query_text: str):
     try:
@@ -38,7 +21,7 @@ def query_rag(query_text: str):
     except sqlite3.OperationalError as e:
         print(f"❌ Error connecting to Chroma DB: {e}")
         return None, None
-    except Exception as e: # Catch other potential Chroma errors
+    except Exception as e:  # Catch other potential Chroma errors
         print(f"❌ Error during Chroma DB operation: {e}")
         return None, None
 
@@ -60,7 +43,7 @@ def query_rag(query_text: str):
 
     try:
         response_text = model.invoke(prompt)
-    except Exception as e: # Catch potential Ollama errors
+    except Exception as e:  # Catch potential Ollama errors
         print(f"❌ Error invoking LLM: {e}")
         return None, None
 

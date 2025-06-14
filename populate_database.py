@@ -7,9 +7,6 @@ from langchain_chroma import Chroma
 from get_embedding_function import get_embedding_function
 import config
 
-# DATA_PATH = "data" # Now in config.py
-# CHROMA_PATH = "chroma_db" # Now in config.py
-
 
 def populate_database():
     if not os.path.exists(config.CHROMA_PATH):
@@ -72,7 +69,7 @@ def populate_database():
             print(f"👉 Adding {len(new_chunks)} new documents")
             new_chunk_ids = [chunk.metadata["id"] for chunk in new_chunks]
             db.add_documents(new_chunks, ids=new_chunk_ids)
-            db.persist()
+            # db.persist()
             print(f"✅ Added {len(new_chunks)} new chunks to Chroma.")
         else:
             print("✅ No new documents to add.")
@@ -108,7 +105,8 @@ def clear_database():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--reset", action="store_true", help="Reset the database.")
+    parser.add_argument("--reset", action="store_true",
+                        help="Reset the database.")
     args = parser.parse_args()
     if args.reset:
         clear_database()

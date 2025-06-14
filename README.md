@@ -30,6 +30,10 @@ A simple and local Retrieval-Augmented Generation (RAG) chatbot built with **Lan
 
 - Run `uv run python main.py` to start the chatbot
 
+- Run `uv run python populate_database.py --reset` to reset the database
+
+- Run `uv run pytest tests/` to run tests
+
 ---
 
 ## 📝 Tips
