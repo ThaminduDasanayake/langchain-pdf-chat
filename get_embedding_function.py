@@ -1,6 +1,7 @@
 from langchain_ollama import OllamaEmbeddings
+import config
 
 
 def get_embedding_function():
-    embeddings = OllamaEmbeddings(model="mxbai-embed-large")
+    embeddings = OllamaEmbeddings(model=config.EMBEDDING_MODEL)
     return embeddings
